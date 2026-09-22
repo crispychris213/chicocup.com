@@ -1,161 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Site Name</title>
-  <meta name="description" content="A short description of your site for search engines.">
-  <style>
-    :root {
-      --bg: #fafaf8;
-      --text: #1a1a1a;
-      --muted: #5c5c5c;
-      --accent: #3b5ba5;
-      --border: #e3e1db;
-      --max-width: 720px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-    }
-
-    header {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .wrap {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 1.5rem 1.25rem;
-    }
-
-    nav.wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .site-name {
-      font-weight: 600;
-      font-size: 1.05rem;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    nav a.nav-link {
-      color: var(--muted);
-      text-decoration: none;
-      margin-left: 1.5rem;
-      font-size: 0.95rem;
-    }
-
-    nav a.nav-link:hover {
-      color: var(--text);
-    }
-
-    main .wrap {
-      padding-top: 3.5rem;
-      padding-bottom: 3.5rem;
-    }
-
-    h1 {
-      font-size: 2.25rem;
-      line-height: 1.25;
-      margin: 0 0 0.75rem;
-      letter-spacing: -0.01em;
-    }
-
-    .lede {
-      font-size: 1.15rem;
-      color: var(--muted);
-      margin: 0 0 1.75rem;
-      max-width: 34ch;
-    }
-
-    .button {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      padding: 0.65rem 1.25rem;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
-
-    .button:hover {
-      opacity: 0.9;
-    }
-
-    section.content {
-      padding-top: 2.5rem;
-      border-top: 1px solid var(--border);
-    }
-
-    section.content h2 {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    section.content p {
-      color: var(--muted);
-      max-width: 60ch;
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-    }
-
-    footer .wrap {
-      padding: 1.5rem 1.25rem;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wellness Challenge — Leaderboard</title>
+<style>
+  :root {
+    --bg: #f6f9f5;
+    --card: #ffffff;
+    --text: #1b3a2f;
+    --muted: #5b6b62;
+    --accent: #d98e2b;
+    --accent-soft: #fbe9cf;
+    --border: #e2e8de;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  header {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 1rem;
+  }
+  header h1 {
+    font-size: 1.9rem;
+    margin: 0 0 0.35rem;
+    letter-spacing: -0.01em;
+  }
+  header p {
+    color: var(--muted);
+    margin: 0;
+  }
+  nav {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 1.5rem 1.5rem;
+    display: flex;
+    gap: 1.25rem;
+  }
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+  }
+  nav a.active {
+    color: var(--text);
+    border-bottom-color: var(--accent);
+    font-weight: 600;
+  }
+  main {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+  }
+  .board {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr auto;
+    align-items: center;
+    padding: 0.85rem 1.1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .row:last-child { border-bottom: none; }
+  .row.lead { background: var(--accent-soft); }
+  .rank { font-weight: 700; color: var(--muted); }
+  .row.lead .rank { color: var(--accent); }
+  .name { font-weight: 500; }
+  .points { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .empty {
+    padding: 2rem 1.1rem;
+    color: var(--muted);
+    text-align: center;
+  }
+  footer {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 1.5rem 2rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+</style>
 </head>
 <body>
-
   <header>
-    <nav class="wrap">
-      <a class="site-name" href="/">Your Site Name</a>
-      <div>
-        <a class="nav-link" href="#about">About</a>
-        <a class="nav-link" href="#contact">Contact</a>
-      </div>
-    </nav>
+    <h1>Wellness Challenge</h1>
+    <p>Live standings, updated as scores come in.</p>
   </header>
-
+  <nav>
+    <a href="index.html" class="active">Leaderboard</a>
+    <a href="score-entry.html">Log a Score</a>
+    <a href="game.html">This Week's Challenge</a>
+  </nav>
   <main>
-    <div class="wrap">
-      <h1>A clear headline about what this site does.</h1>
-      <p class="lede">One or two sentences that tell a visitor what they're looking at and why it matters to them.</p>
-      <a class="button" href="#about">Learn more</a>
-
-      <section class="content" id="about">
-        <h2>About</h2>
-        <p>Replace this with a short paragraph about you, your project, or your company. Keep it plain and specific — say what this is, not how impressive it sounds.</p>
-      </section>
-
-      <section class="content" id="contact">
-        <h2>Contact</h2>
-        <p>Add an email address, a contact form, or links to where people can reach you.</p>
-      </section>
+    <div class="board" id="board">
+      <div class="empty">Loading standings…</div>
     </div>
   </main>
+  <footer id="updated"></footer>
 
-  <footer>
-    <div class="wrap">
-      &copy; 2026 Your Name. All rights reserved.
-    </div>
-  </footer>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+    import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
 
+    // Public client config — safe to expose. Security is enforced by Firestore rules.
+    const firebaseConfig = {
+      apiKey: "AIzaSyBuS_p_lGaXD2lnCPKsEC4oLJPQt-hINE8",
+      authDomain: "wellness-challenge-2026-8e564.firebaseapp.com",
+      projectId: "wellness-challenge-2026-8e564",
+      storageBucket: "wellness-challenge-2026-8e564.firebasestorage.app",
+      messagingSenderId: "305253843307",
+      appId: "1:305253843307:web:a1dee659f9bebffb484c2e"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Fixed roster — keep this list identical across index.html, score-entry.html, and game.html
+    const ROSTER = [
+      "January", "Michael", "Mary Beth", "Sarah", "Jessica", "Caitlin",
+      "Matt", "Chris", "Anna", "Ellie", "Erin", "Alyssa", "David", "Stephanie"
+    ];
+
+    const boardEl = document.getElementById("board");
+    const updatedEl = document.getElementById("updated");
+
+    // Live listener — the board re-renders automatically whenever any entry is added
+    onSnapshot(collection(db, "entries"), (snapshot) => {
+      const totals = {};
+      ROSTER.forEach(name => totals[name] = 0);
+
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        if (Object.prototype.hasOwnProperty.call(totals, data.participant)) {
+          totals[data.participant] += Number(data.points) || 0;
+        }
+      });
+
+      const ranked = Object.entries(totals).sort((a, b) => b[1] - a[1]);
+
+      boardEl.innerHTML = ranked.map(([name, points], i) => `
+        <div class="row ${i === 0 && points > 0 ? "lead" : ""}">
+          <div class="rank">${i + 1}</div>
+          <div class="name">${name}</div>
+          <div class="points">${points}</div>
+        </div>
+      `).join("");
+
+      updatedEl.textContent = "Last updated " + new Date().toLocaleTimeString();
+    }, (error) => {
+      boardEl.innerHTML = `<div class="empty">Couldn't load standings: ${error.message}</div>`;
+    });
+  </script>
 </body>
 </html>
